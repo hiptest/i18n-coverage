@@ -1,0 +1,7 @@
+---
+en:
+  home:
+    title: "Hello"
+    desc: "Welcome here %{username}"
+  
+  error: "Oups, something wrong happened"

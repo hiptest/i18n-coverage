@@ -1,0 +1,6 @@
+---
+en:
+  simple: "Something"
+  pluralized:
+    one: "One thing"
+    other: "%{count} things"
