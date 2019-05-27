@@ -1,5 +1,7 @@
 # I18n-coverage
 [![Build Status](https://travis-ci.org/hiptest/i18n-coverage.svg?branch=master)](https://travis-ci.org/hiptest/i18n-coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/30a359b5ad82800c5d35/maintainability)](https://codeclimate.com/github/hiptest/i18n-coverage/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/30a359b5ad82800c5d35/test_coverage)](https://codeclimate.com/github/hiptest/i18n-coverage/test_coverage)
 
 Simple gem to see how much of your i18n keys are used during tests. It requires that the translations are handled by the [i18n](https://rubygems.org/gems/i18n/) gem.
 
