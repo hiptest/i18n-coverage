@@ -19,7 +19,7 @@ First, you need to ensure that the gem is correctly loaded when running the test
 
 ```ruby
 # file spec_helper.rb
-require 'i18n-coverage'
+require 'i18n/coverage'
 ```
 
 You also need to output/read the results of the coverage. This should be done once all the tests have been executed. Once again, an example with rspec:
