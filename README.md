@@ -1,4 +1,5 @@
 # I18n-coverage
+[![Build Status](https://travis-ci.org/hiptest/i18n-coverage.svg?branch=master)](https://travis-ci.org/hiptest/i18n-coverage)
 
 Simple gem to see how much of your i18n keys are used during tests. It requires that the translations are handled by the [i18n](https://rubygems.org/gems/i18n/) gem.
 
