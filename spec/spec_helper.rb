@@ -2,6 +2,9 @@ require "i18n"
 require "bundler/setup"
 require "i18n/coverage"
 
+require 'simplecov'
+SimpleCov.start
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
