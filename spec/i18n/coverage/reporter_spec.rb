@@ -8,7 +8,7 @@ RSpec.describe I18n::Coverage::Reporter do
       expect { subject.report }.to output([
         '',
         'I18n Coverage: 0.0% of the keys used',
-        '3 keys found in yml file, 0 keys used during the tests',
+        '3 keys found in yml files, 0 keys used during the tests',
         'Unused keys:',
         '  home.title',
         '  home.desc',

@@ -14,14 +14,7 @@ module I18n
       end
 
       def report
-        puts ""
-        puts "I18n Coverage: #{hash_report[:percentage_used].round(2)}% of the keys used"
-        puts "#{hash_report[:key_count]} keys found in yml file, #{hash_report[:used_key_count]} keys used during the tests"
-
-        if hash_report[:unused_keys]
-          puts "Unused keys:"
-          hash_report[:unused_keys].map {|k| puts "  #{k}"}
-        end
+        I18n::Coverage.config.printer.print(hash_report)
       end
 
       def hash_report
