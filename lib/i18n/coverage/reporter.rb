@@ -4,12 +4,12 @@ require 'i18n/coverage/key_logger'
 module I18n
   module Coverage
     class Reporter
-      def self.report(locale: 'en', locale_dir_path: 'config/locales')
-        Reporter.new(locale: locale, locale_dir_path: locale_dir_path).report
+      def self.report
+        Reporter.new.report
       end
 
-      def initialize(locale: 'en', locale_dir_path: 'config/locales')
-        @existing_keys = KeyLister.list_keys(locale: locale, locale_dir_path: locale_dir_path)
+      def initialize
+        @existing_keys = KeyLister.list_keys
         @stored_keys = KeyLogger.stored_keys
       end
 

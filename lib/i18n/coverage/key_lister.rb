@@ -3,12 +3,12 @@ require 'yaml'
 module I18n
   module Coverage
     class KeyLister
-      def self.list_keys(locale: 'en', locale_dir_path: 'config/locales')
-        KeyLister.new(locale, locale_dir_path).list_keys
+      def self.list_keys
+        KeyLister.new.list_keys
       end
 
-      def initialize(locale, locale_dir_path)
-        @locale = locale
+      def initialize
+        locale_dir_path = I18n::Coverage.config.locale_dir_path
         @locale_files = Dir.glob("#{locale_dir_path}/**/*.yml")
         @keys = Set[]
       end
@@ -24,7 +24,7 @@ module I18n
       private
 
       def visit_childs(source:, path: )
-        node = source.dig(@locale, *path)
+        node = source.dig(locale, *path)
 
         if node.respond_to? :keys
           keys = node.keys
@@ -41,6 +41,10 @@ module I18n
 
       def pluralization_keys?(keys)
         return (keys - ['zero', 'one', 'other']).empty?
+      end
+
+      def locale
+        I18n::Coverage.config.locale
       end
     end
   end
