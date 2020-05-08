@@ -5,7 +5,14 @@ require "i18n/backend/key_logger"
 
 module I18n
   module Coverage
+    def self.start
+      I18n::Backend::Simple.send(:include, I18n::Backend::KeyLogger)
+      at_exit { I18n::Coverage::Reporter.report }
+    end
   end
 end
 
-I18n::Backend::Simple.send(:include, I18n::Backend::KeyLogger) if ENV['I18N_COVERAGE']
+if ENV['I18N_COVERAGE']
+  warn "DEPRECATED: use I18n::Coverage.start instead"
+  I18n::Backend::Simple.send(:include, I18n::Backend::KeyLogger)
+end
