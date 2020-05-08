@@ -21,8 +21,8 @@ RSpec.configure do |config|
   config.before do
     I18n::Coverage::KeyLogger.clear_keys
 
-    I18n::Coverage.configure do |config|
-      config.locale_dir_path = 'spec/fixtures/simple'
+    I18n::Coverage.configure do |cov_config|
+      cov_config.locale_dir_path = 'spec/fixtures/simple'
     end
   end
 end

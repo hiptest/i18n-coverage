@@ -10,7 +10,7 @@ RSpec.describe I18n::Backend::KeyLogger do
   end
 
   it 'stores the keys used when translating in a I18n::Coverage::KeyLogger' do
-    localized = I18n.translate('some_key')
+    I18n.translate('some_key')
     expect(key_logger.stored_keys).to include('some_key')
   end
 

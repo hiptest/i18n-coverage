@@ -16,16 +16,6 @@ RSpec.describe I18n::Coverage::KeyLogger do
     expect(subject.stored_keys.length).to eq(1)
   end
 
-  it 'shares keys across all instances' do
-    instance1 = subject.new
-    instance2 = subject.new
-
-    instance1.store_key('key1')
-    instance1.store_key('key2')
-
-    expect(instance2.stored_keys).to eq(instance1.stored_keys)
-  end
-
   describe '.clear_keys' do
     it 'empties the stored keys' do
       subject.store_key('plop')

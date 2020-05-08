@@ -34,7 +34,7 @@ module I18n
           else
             keys.map { |key| visit_childs(source: source, path: path + [key]) }
           end
-        elsif path.count > 0
+        elsif path.count.positive?
           @keys.add(path.join('.'))
         end
       end
