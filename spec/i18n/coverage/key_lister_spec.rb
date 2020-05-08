@@ -7,7 +7,7 @@ RSpec.describe I18n::Coverage::KeyLister do
     it 'reads all keys from a locale file' do
       expect(subject.list_keys(locale_dir_path: 'spec/fixtures/simple')).to contain_exactly('home.title', 'home.desc', 'error')
     end
-   
+
     it 'uses by default "config/locales/en.yml"' do
       allow(File).to receive(:open).and_return("---\nen:\n  test: '1'")
 

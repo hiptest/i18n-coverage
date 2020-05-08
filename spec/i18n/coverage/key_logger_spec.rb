@@ -13,13 +13,13 @@ RSpec.describe I18n::Coverage::KeyLogger do
     subject.store_key('Ho hi :)')
     subject.store_key('Ho hi :)')
 
-    expect(subject.stored_keys.length).to eq(1)    
+    expect(subject.stored_keys.length).to eq(1)
   end
 
   it 'shares keys across all instances' do
     instance1 = subject.new
     instance2 = subject.new
-    
+
     instance1.store_key('key1')
     instance1.store_key('key2')
 

@@ -18,7 +18,7 @@ module I18n
       end
 
       def clear_keys
-        stored_keys.clear        
+        stored_keys.clear
       end
 
       def stored_keys

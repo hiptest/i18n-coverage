@@ -6,20 +6,20 @@ module I18n
       def self.list_keys(locale: 'en', locale_dir_path: 'config/locales')
         KeyLister.new(locale, locale_dir_path).list_keys
       end
-  
+
       def initialize(locale, locale_dir_path)
         @locale = locale
         @source = YAML.load(File.open(File.expand_path("#{locale_dir_path}/#{locale}.yml")))
         @keys = Set[]
       end
-  
+
       def list_keys
         visit_childs(path: [])
         @keys
       end
-  
+
       private
-  
+
       def visit_childs(path: )
         node = @source.dig(*[@locale, path].flatten.compact)
         if node.respond_to? :keys
