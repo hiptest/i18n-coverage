@@ -1,0 +1,5 @@
+---
+en:
+  home:
+    title: "Hello"
+    desc: "Welcome here %{username}"

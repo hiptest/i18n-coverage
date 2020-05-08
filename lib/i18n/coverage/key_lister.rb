@@ -9,28 +9,32 @@ module I18n
 
       def initialize(locale, locale_dir_path)
         @locale = locale
-        @source = YAML.load(File.open(File.expand_path("#{locale_dir_path}/#{locale}.yml")))
+        @locale_files = Dir.glob("#{locale_dir_path}/**/*.yml")
         @keys = Set[]
       end
 
       def list_keys
-        visit_childs(path: [])
+        @locale_files
+          .map(&YAML.method(:load_file))
+          .flat_map { |hash| visit_childs(source: hash, path: []) }
+
         @keys
       end
 
       private
 
-      def visit_childs(path: )
-        node = @source.dig(*[@locale, path].flatten.compact)
+      def visit_childs(source:, path: )
+        node = source.dig(@locale, *path)
+
         if node.respond_to? :keys
           keys = node.keys
 
           if pluralization_keys?(keys)
             @keys.add(path.join('.'))
           else
-            keys.map {|key| visit_childs(path: [path, key].flatten.compact)}
+            keys.map {|key| visit_childs(source: source, path: path + [key])}
           end
-        else
+        elsif path.count > 0
           @keys.add(path.join('.'))
         end
       end
