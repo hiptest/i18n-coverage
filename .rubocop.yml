@@ -1,0 +1,25 @@
+AllCops:
+  # Wait until the community has decided
+  NewCops: disable
+
+# These files naturally have long blocks
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+    - '*.gemspec'
+
+# Avoid Cops with arbitrary settings
+Metrics/MethodLength:
+  Enabled: false
+
+# This is no longer upcoming for Ruby
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Avoid Cops with arbitrary settings
+Layout/LineLength:
+  Enabled: false
+
+# Avoid comments unless they add value
+Style/Documentation:
+  Enabled: false

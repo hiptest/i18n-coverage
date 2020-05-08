@@ -5,8 +5,8 @@ RSpec.describe I18n::Backend::KeyLogger do
 
   before do
     # Ok, that could be better with mocking/dummy classes but at least it tests in real conditions
-    I18n::Backend::Simple.send(:include, I18n::Backend::KeyLogger)
-    I18n.backend.store_translations(:en, :some_key => 'Some key in :en')
+    I18n::Backend::Simple.include described_class
+    I18n.backend.store_translations(:en, some_key: 'Some key in :en')
   end
 
   it 'stores the keys used when translating in a I18n::Coverage::KeyLogger' do

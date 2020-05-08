@@ -23,7 +23,7 @@ module I18n
 
       private
 
-      def visit_childs(source:, path: )
+      def visit_childs(source:, path:)
         node = source.dig(locale, *path)
 
         if node.respond_to? :keys
@@ -32,7 +32,7 @@ module I18n
           if pluralization_keys?(keys)
             @keys.add(path.join('.'))
           else
-            keys.map {|key| visit_childs(source: source, path: path + [key])}
+            keys.map { |key| visit_childs(source: source, path: path + [key]) }
           end
         elsif path.count > 0
           @keys.add(path.join('.'))
@@ -40,7 +40,7 @@ module I18n
       end
 
       def pluralization_keys?(keys)
-        return (keys - ['zero', 'one', 'other']).empty?
+        (keys - %w[zero one other]).empty?
       end
 
       def locale

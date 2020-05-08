@@ -1,9 +1,9 @@
 require 'i18n/coverage/key_lister'
 
 RSpec.describe I18n::Coverage::KeyLister do
-  let(:subject) { I18n::Coverage::KeyLister }
+  let(:subject) { described_class }
 
-  context '.list_keys' do
+  describe '.list_keys' do
     it 'reads all keys in an English locale file' do
       expect(subject.list_keys).to contain_exactly('home.title', 'home.desc', 'error')
     end

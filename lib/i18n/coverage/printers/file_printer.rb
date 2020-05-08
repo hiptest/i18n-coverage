@@ -2,7 +2,7 @@ module I18n
   module Coverage
     module Printers
       class FilePrinter
-        REPORT_PATH = "coverage/i18n.json"
+        REPORT_PATH = 'coverage/i18n.json'.freeze
 
         def self.print(report)
           new(report).print

@@ -1,7 +1,7 @@
 require 'i18n/coverage/key_logger'
 
 RSpec.describe I18n::Coverage::KeyLogger do
-  let(:subject) { I18n::Coverage::KeyLogger }
+  let(:subject) { described_class }
 
   it 'stores keys with "store_key" and provides the ones stored with "stored_keys"' do
     subject.store_key('Ho hi :)')

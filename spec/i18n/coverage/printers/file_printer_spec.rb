@@ -7,7 +7,7 @@ RSpec.describe I18n::Coverage::Printers::FilePrinter do
         key_count: 4,
         used_key_count: 2,
         percentage_used: 50.0,
-        unused_keys: ["a", "b"]
+        unused_keys: %w[a b]
       }
     end
 

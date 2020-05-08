@@ -8,8 +8,8 @@ module I18n
                     :printer
 
       def initialize
-        self.locale = "en"
-        self.locale_dir_path = "config/locales"
+        self.locale = 'en'
+        self.locale_dir_path = 'config/locales'
         self.printer = I18n::Coverage::Printers::BasicPrinter
       end
     end

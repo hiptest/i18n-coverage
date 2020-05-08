@@ -5,7 +5,7 @@ RSpec.describe I18n::Coverage::Printers::BasicPrinter do
         key_count: 4,
         used_key_count: 2,
         percentage_used: 50.0,
-        unused_keys: ["a", "b"]
+        unused_keys: %w[a b]
       }
 
       expect { described_class.print(hash_report) }.to output([
