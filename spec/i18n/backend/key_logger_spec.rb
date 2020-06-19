@@ -18,6 +18,11 @@ RSpec.describe I18n::Backend::KeyLogger do
     expect(I18n.translate('some_key')).to eq('Some key in :en')
   end
 
+  it 'stores keys used with an optional scope argument' do
+    I18n.translate('some_key', scope: %i[some_outer_prefix some_prefix])
+    expect(key_logger.stored_keys).to include('some_outer_prefix.some_prefix.some_key')
+  end
+
   it 'stores keys these are looked up but are not strictly translated' do
     I18n.exists?('some_key')
     expect(key_logger.stored_keys).to include('some_key')
