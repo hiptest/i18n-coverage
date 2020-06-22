@@ -17,33 +17,42 @@ gem 'i18n-coverage'
 
 ## Usage
 
-First, you need to ensure that the gem is correctly loaded when running the tests. When using rspec for example:
+Add the following lines somewhere to your test setup. For RSpec, this will be at the top of `spec_helper.rb`.
+
+```ruby
+require 'i18n/coverage'
+I18n::Coverage.start
+```
+
+If you don't want to check I18n Coverage in every test run, you could enable it with an environment variable.
 
 ```ruby
 # file spec_helper.rb
 require 'i18n/coverage'
+I18n::Coverage.start if ENV['I18N_COVERAGE']
 ```
-
-You also need to output/read the results of the coverage. This should be done once all the tests have been executed. Once again, an example with rspec:
-
-```ruby
-RSpec.configure do |config|
-  config.after(:suite) do
-    I18n::Coverage::Reporter.report if ENV['I18N_COVERAGE']
-  end
-end
-```
-
-Then, when running the tests, you need to enable coverage by setting the environment variable `I18N_COVERAGE`. For example with rspec:
 
 ```shell
 I18N_COVERAGE=1 bundle exec rspec
 ```
 
+## Configuration
+
+The default config is [here](lib/i18n/coverage/config.rb).
+
+### Printer
+
+By default the coverage is output to the console. You can also select a different printer, or write your own!
+
+```ruby
+require 'i18n/coverage/printers/file_printer'
+I18n::Coverage.config.printer = I18n::Coverage::Printer::FilePrinter
+I18n::Coverage.start
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests, or just `rake` to run all tasks, such as linting. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 

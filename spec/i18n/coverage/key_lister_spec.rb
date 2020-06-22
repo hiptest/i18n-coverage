@@ -1,22 +1,25 @@
 require 'i18n/coverage/key_lister'
 
 RSpec.describe I18n::Coverage::KeyLister do
-  let(:subject) { I18n::Coverage::KeyLister }
+  let(:subject) { described_class }
 
-  context '.list_keys' do
-    it 'reads all keys from a locale file' do
-      expect(subject.list_keys(locale_dir_path: 'spec/fixtures/simple')).to contain_exactly('home.title', 'home.desc', 'error')
+  describe '.list_keys' do
+    it 'reads all keys in an English locale file' do
+      expect(subject.list_keys).to contain_exactly('home.title', 'home.desc', 'error')
     end
-   
-    it 'uses by default "config/locales/en.yml"' do
-      allow(File).to receive(:open).and_return("---\nen:\n  test: '1'")
 
-      subject.list_keys
-      expect(File).to have_received(:open).with(File.expand_path('config/locales/en.yml'))
+    it 'reads all keys in a specified locale file' do
+      I18n::Coverage.config.locale = 'es'
+      expect(subject.list_keys).to contain_exactly('other_key')
+    end
+
+    it 'reads all keys split across locale files' do
+      expect(subject.list_keys).to contain_exactly('home.title', 'home.desc', 'error')
     end
 
     it 'does not take into account the keys used for pluralization' do
-      expect(subject.list_keys(locale_dir_path: 'spec/fixtures/plurals')).to contain_exactly('simple', 'pluralized')
+      I18n::Coverage.config.locale_dir_path = 'spec/fixtures/plurals'
+      expect(subject.list_keys).to contain_exactly('simple', 'pluralized')
     end
   end
 end
