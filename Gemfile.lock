@@ -62,7 +62,7 @@ GEM
       ast (~> 2.4.0)
     psych (3.1.0)
     public_suffix (3.1.0)
-    rack (2.2.2)
+    rack (2.2.3)
     rainbow (3.0.0)
     rake (13.0.1)
     rdoc (6.1.1)
