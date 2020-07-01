@@ -1,8 +1,8 @@
 I18N coverage Changelog
 =======================
 
-Unreleased
-----------
+0.2.0
+-----
 
 - Relax coverage criteria [PR#5](https://github.com/hiptest/i18n-coverage/pull/5) (by [benthorner](https://github.com/benthorner))
 

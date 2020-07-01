@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    i18n-coverage (0.1.1)
+    i18n-coverage (0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -112,4 +112,4 @@ DEPENDENCIES
   simplecov
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
