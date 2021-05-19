@@ -46,7 +46,7 @@ By default the coverage is output to the console. You can also select a differen
 
 ```ruby
 require 'i18n/coverage/printers/file_printer'
-I18n::Coverage.config.printer = I18n::Coverage::Printer::FilePrinter
+I18n::Coverage.config.printer = I18n::Coverage::Printers::FilePrinter
 I18n::Coverage.start
 ```
 
